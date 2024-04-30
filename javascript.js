@@ -12,3 +12,8 @@ let getComputerChoice = () => {
     return "scissors";
   }
 };
+
+let getHumanChoice = () => {
+  let humanChoice = prompt("Choose one: rock, paper, or scissors");
+  return humanChoice.toLowerCase();
+};
