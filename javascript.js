@@ -1,3 +1,4 @@
+// Helper function to generate a random whole number
 const getRandomNumber = (max) => Math.floor(Math.random() * max);
 
 let getComputerChoice = () => {
@@ -13,14 +14,17 @@ let getComputerChoice = () => {
   }
 };
 
+// Prompt the user for their choice
 let getHumanChoice = () => {
   let humanChoice = prompt("Choose one: rock, paper, or scissors");
   return humanChoice.toLowerCase();
 };
 
+// Declare scoring
 let humanScore = 0;
 let computerScore = 0;
 
+// The logic for a single round
 let playRound = (humanChoice, computerChoice) => {
   if (humanChoice === "rock" && computerChoice === "paper") {
     console.log("You lose! Paper beats Rock.");
@@ -45,5 +49,16 @@ let playRound = (humanChoice, computerChoice) => {
   }
 };
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+// The logic for a game with 5 rounds
+let playGame = () => {
+  for (let i = 0; i < 5; i++) {
+    console.log("Starting round ${i + 1}...");
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+  }
+  console.log("Thank you for playing!");
+};
+
+// Run the game
+playGame();
