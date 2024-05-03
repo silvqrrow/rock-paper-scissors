@@ -18,34 +18,35 @@ let getComputerChoice = () => {
 let humanScore = 0;
 let computerScore = 0;
 
-// The logic for a single round
-let playRound = (humanChoice, computerChoice) => {
-  if (humanChoice === "rock" && computerChoice === "paper") {
-    console.log("You lose! Paper beats Rock.");
-    computerScore++;
-  } else if (humanChoice === "rock" && computerChoice === "scissors") {
-    console.log("You win! Rock beats Scissors!");
-    humanScore++;
-  } else if (humanChoice === "paper" && computerChoice === "rock") {
-    console.log("You win! Paper beats Rock.");
-    humanScore++;
-  } else if (humanChoice === "paper" && computerChoice === "scissors") {
-    console.log("You lose! Scissors beats Paper.");
-    computerScore++;
-  } else if (humanChoice === "scissors" && computerChoice === "paper") {
-    console.log("You win! Scissors beats Paper.");
-    humanScore++;
-  } else if (humanChoice === "scissors" && computerChoice === "rock") {
-    console.log("You lose! Rock beats Scissors.");
-    computerScore++;
-  } else {
-    console.log("You tied!");
-  }
-};
-
 const rock = document.querySelector(".rock");
 const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
+const result = document.querySelector(".result");
+
+// The logic for a single round
+let playRound = (humanChoice, computerChoice) => {
+  if (humanChoice === "rock" && computerChoice === "paper") {
+    result.textContent = "You lose! Paper beats Rock.";
+    computerScore++;
+  } else if (humanChoice === "rock" && computerChoice === "scissors") {
+    result.textContent = "You win! Rock beats Scissors!";
+    humanScore++;
+  } else if (humanChoice === "paper" && computerChoice === "rock") {
+    result.textContent = "You win! Paper beats Rock.";
+    humanScore++;
+  } else if (humanChoice === "paper" && computerChoice === "scissors") {
+    result.textContent = "You lose! Scissors beats Paper.";
+    computerScore++;
+  } else if (humanChoice === "scissors" && computerChoice === "paper") {
+    result.textContent = "You win! Scissors beats Paper.";
+    humanScore++;
+  } else if (humanChoice === "scissors" && computerChoice === "rock") {
+    result.textContent = "You lose! Rock beats Scissors.";
+    computerScore++;
+  } else {
+    result.textContent = "You tied!";
+  }
+};
 
 rock.addEventListener("click", function (e) {
   const computerChoice = getComputerChoice();
