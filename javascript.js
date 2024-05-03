@@ -27,28 +27,33 @@ const result = document.querySelector(".result");
 const humanScoreElement = document.querySelector(".score__human-score");
 const computerScoreElement = document.querySelector(".score__computer-score");
 
-// The logic for a single round
 let playRound = (humanChoice, computerChoice) => {
-  if (humanChoice === "rock" && computerChoice === "paper") {
-    result.textContent = "You lose! Paper beats Rock.";
+  if (
+    (humanChoice === "rock" && computerChoice === "paper") ||
+    (humanChoice === "paper" && computerChoice === "scissors") ||
+    (humanChoice === "scissors" && computerChoice === "rock")
+  ) {
+    result.textContent =
+      "You lose! " +
+      computerChoice.charAt(0).toUpperCase() +
+      computerChoice.slice(1) +
+      " beats " +
+      humanChoice.charAt(0).toUpperCase() +
+      humanChoice.slice(1);
+    +".";
     computerScore++;
-  } else if (humanChoice === "rock" && computerChoice === "scissors") {
-    result.textContent = "You win! Rock beats Scissors!";
-    humanScore++;
-  } else if (humanChoice === "paper" && computerChoice === "rock") {
-    result.textContent = "You win! Paper beats Rock.";
-    humanScore++;
-  } else if (humanChoice === "paper" && computerChoice === "scissors") {
-    result.textContent = "You lose! Scissors beats Paper.";
-    computerScore++;
-  } else if (humanChoice === "scissors" && computerChoice === "paper") {
-    result.textContent = "You win! Scissors beats Paper.";
-    humanScore++;
-  } else if (humanChoice === "scissors" && computerChoice === "rock") {
-    result.textContent = "You lose! Rock beats Scissors.";
-    computerScore++;
-  } else {
+  } else if (humanChoice === computerChoice) {
     result.textContent = "You tied!";
+  } else {
+    result.textContent =
+      "You win! " +
+      humanChoice.charAt(0).toUpperCase() +
+      humanChoice.slice(1) +
+      " beats " +
+      computerChoice.charAt(0).toUpperCase() +
+      computerChoice.slice(1);
+    +".";
+    humanScore++;
   }
   // Update the score after every round
   humanScoreElement.textContent = humanScore;
