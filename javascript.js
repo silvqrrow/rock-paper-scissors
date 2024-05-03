@@ -14,12 +14,6 @@ let getComputerChoice = () => {
   }
 };
 
-// Prompt the user for their choice
-let getHumanChoice = () => {
-  let humanChoice = prompt("Choose one: rock, paper, or scissors");
-  return humanChoice.toLowerCase();
-};
-
 // Declare scoring
 let humanScore = 0;
 let computerScore = 0;
@@ -49,16 +43,21 @@ let playRound = (humanChoice, computerChoice) => {
   }
 };
 
-// The logic for a game with 5 rounds
-let playGame = () => {
-  for (let i = 0; i < 5; i++) {
-    console.log("Starting round ${i + 1}...");
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-  }
-  console.log("Thank you for playing!");
-};
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
 
-// Run the game
-playGame();
+rock.addEventListener("click", function (e) {
+  const computerChoice = getComputerChoice();
+  playRound("rock", computerChoice);
+});
+
+paper.addEventListener("click", function (e) {
+  const computerChoice = getComputerChoice();
+  playRound("paper", computerChoice);
+});
+
+scissors.addEventListener("click", function (e) {
+  const computerChoice = getComputerChoice();
+  playRound("scissors", computerChoice);
+});
