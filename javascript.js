@@ -77,6 +77,7 @@ let playRound = (humanChoice, computerChoice) => {
       "Victory! Select rock, paper, or scissors to play again.";
     humanScore = 0;
     computerScore = 0;
+    round = 1;
   } else if (computerScore === 5) {
     result.textContent =
       "Defeat. Select rock, paper, or scissors to play again.";
