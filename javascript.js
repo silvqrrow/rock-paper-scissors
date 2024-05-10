@@ -18,6 +18,7 @@ let getComputerChoice = () => {
 // Declare scoring variables
 let humanScore = 0;
 let computerScore = 0;
+let round = 1;
 
 // Select HTML elements
 const rock = document.querySelector(".rock");
@@ -37,6 +38,9 @@ let playRound = (humanChoice, computerChoice) => {
   ) {
     // All inputs are in lower-case, using slicing and the upper-case method will capitalize the first letter of what the human and computer picked
     result.textContent =
+      "Round " +
+      round +
+      ": " +
       "You lose! " +
       computerChoice.charAt(0).toUpperCase() +
       computerChoice.slice(1) +
@@ -45,10 +49,15 @@ let playRound = (humanChoice, computerChoice) => {
       humanChoice.slice(1);
     +".";
     computerScore++;
+    round++;
   } else if (humanChoice === computerChoice) {
-    result.textContent = "You tied!";
+    result.textContent = "Round " + round + ": " + "You tied!";
+    round++;
   } else {
     result.textContent =
+      "Round " +
+      round +
+      ": " +
       "You win! " +
       humanChoice.charAt(0).toUpperCase() +
       humanChoice.slice(1) +
@@ -57,19 +66,23 @@ let playRound = (humanChoice, computerChoice) => {
       computerChoice.slice(1);
     +".";
     humanScore++;
+    round++;
   }
   // Update the score after every round
   humanScoreElement.textContent = humanScore;
   computerScoreElement.textContent = computerScore;
 
   if (humanScore === 5) {
-    result.textContent = "Victory!";
+    result.textContent =
+      "Victory! Select rock, paper, or scissors to play again.";
     humanScore = 0;
     computerScore = 0;
   } else if (computerScore === 5) {
-    result.textContent = "Defeat.";
+    result.textContent =
+      "Defeat. Select rock, paper, or scissors to play again.";
     humanScore = 0;
     computerScore = 0;
+    round = 1;
   }
 };
 
