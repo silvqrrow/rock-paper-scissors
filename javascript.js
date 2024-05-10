@@ -26,6 +26,8 @@ const scissors = document.querySelector(".scissors");
 const result = document.querySelector(".result");
 const humanScoreElement = document.querySelector(".score__human-score");
 const computerScoreElement = document.querySelector(".score__computer-score");
+humanScoreElement.textContent = humanScore;
+computerScoreElement.textContent = computerScore;
 
 let playRound = (humanChoice, computerChoice) => {
   if (
@@ -33,6 +35,7 @@ let playRound = (humanChoice, computerChoice) => {
     (humanChoice === "paper" && computerChoice === "scissors") ||
     (humanChoice === "scissors" && computerChoice === "rock")
   ) {
+    // All inputs are in lower-case, using slicing and the upper-case method will capitalize the first letter of what the human and computer picked
     result.textContent =
       "You lose! " +
       computerChoice.charAt(0).toUpperCase() +
